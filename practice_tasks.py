@@ -65,6 +65,7 @@ for i in range(1, n + 1):
 
 
 
+
 # --- Task 7: Find the maximum ---
 # Given a list of numbers, find and print the largest one.
 # Use this list: numbers = [3, 17, 8, 42, 1, 9]
