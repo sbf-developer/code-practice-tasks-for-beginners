@@ -22,6 +22,12 @@ print(first_number + second_number)
 # --- Task 3: Even or odd ---
 # Ask the user for an integer and print whether it is even or odd.
 
+number = int(input("Insert a random number here: "))
+
+if number % 2 == 0:
+    print("Even")
+else:
+    print("Odd")
 
 
 # --- Task 4: FizzBuzz (single number) ---
@@ -29,6 +35,16 @@ print(first_number + second_number)
 # If divisible by 5, print "Buzz". If divisible by both, print "FizzBuzz".
 # Otherwise print the number itself.
 
+number = int(input("Insert a number here: "))
+
+if number % 3 == 0 and number % 5 == 0:
+    print("FizzBuzz")
+elif number % 3 == 0:
+    print("Fizz")
+elif number % 5 == 0:
+    print("Buzz")
+else:
+    print(number)
 
 
 # --- Task 5: Count to n ---
