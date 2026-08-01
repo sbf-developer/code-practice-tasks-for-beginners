@@ -63,7 +63,8 @@ for i in range(1, n + 1):
 # Ask the user for a word and print it reversed.
 # Example: "hello" -> "olleh"
 
-
+word = input("Insert a word: ")
+print(word[::-1])
 
 
 # --- Task 7: Find the maximum ---
