@@ -71,6 +71,15 @@ print(word[::-1])
 # Given a list of numbers, find and print the largest one.
 # Use this list: numbers = [3, 17, 8, 42, 1, 9]
 
+numbers = [3, 17, 8, 42, 1, 9]
+
+largest = numbers [0]
+
+for n in numbers:
+    if n > largest:
+        largest = n
+
+print(largest)
 
 
 # --- Task 8: Sum a list ---
