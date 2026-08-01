@@ -133,6 +133,18 @@ print(result)
 # and backwards, otherwise False.
 # Example: "radar" -> True, "hello" -> False
 
+word = input("Insert a word: ")
+
+if word == word[::-1]:
+    print(True)
+else:
+    print(False)
+
+
+
+
+
+
 
 
 # --- Task 12: Multiplication table ---
@@ -141,6 +153,10 @@ print(result)
 #   3 x 1 = 3
 #   3 x 2 = 6
 #   ...
+
+
+
+
 
 
 
