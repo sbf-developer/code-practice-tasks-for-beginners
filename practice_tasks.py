@@ -51,6 +51,12 @@ else:
 # Ask the user for a positive integer n and print numbers 1 through n,
 # one per line.
 
+n=0
+while n <= 0:
+    n = int(input("Insert a number: "))
+
+for i in range(1, n + 1):
+    print (i)
 
 
 # --- Task 6: Reverse a string ---
