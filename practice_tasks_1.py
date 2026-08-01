@@ -118,6 +118,14 @@ print(total)
 # Ask the user for a non-negative integer n and compute n! (factorial).
 # Example: 5! = 5 * 4 * 3 * 2 * 1 = 120
 
+n = int(input("Insert a number: "))
+
+result = 1
+
+for i in range(1, n + 1):
+    result = result * i
+
+print(result)
 
 
 # --- Task 11: Palindrome check ---
