@@ -86,11 +86,31 @@ print(largest)
 # Given a list of numbers, compute and print the total.
 # Use this list: numbers = [10, 20, 30, 40, 5]
 
+numbers = [10, 20, 30, 40, 5]
+
+total = 0
+
+for n in numbers:
+    total = total + n
+
+print(total)
 
 
 # --- Task 9: Count vowels ---
 # Ask the user for a sentence and count how many vowels (a, e, i, o, u) it contains.
 # Ignore uppercase/lowercase.
+
+sentence = input("Insert a sentence: ")
+
+total = 0
+
+for char in sentence:
+    if char.lower() in "aeiou":
+        total +=1
+
+print(total)
+
+
 
 
 
