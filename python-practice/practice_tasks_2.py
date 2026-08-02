@@ -2,6 +2,9 @@
 # Python Practice Tasks 2
 # Write your solution below each task comment.
 #
+# Stuck? Write pseudocode first — plain-English steps of what your
+# program should do. Once the logic makes sense, translate it into code.
+#
 # These tasks focus on NEW topics not covered in practice_tasks_1.py:
 #   f-strings, subtraction, 3-way branching, elif chains,
 #   countdown/reverse range, .split(), second-largest logic,
