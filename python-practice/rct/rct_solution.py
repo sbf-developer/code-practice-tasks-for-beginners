@@ -19,14 +19,17 @@
 #
 # Run:  python rct_solution.py
 #
+# Data: trial_data.csv (mock export from data collection / cleaning)
+#
 # Dependencies: Python standard library only.
 # ============================================================
 
 from __future__ import annotations
 
+import csv
 import math
-import random
 from dataclasses import dataclass
+from pathlib import Path
 from typing import Iterable
 
 
@@ -40,65 +43,35 @@ RANDOMIZATION_RATIO = (1, 1)  # treated : control
 ALPHA = 0.05
 HYPOTHESIS = "Job training raises post-program income relative to control."
 
+DATA_FILE = Path(__file__).parent / "trial_data.csv"
+
 
 # ---------------------------------------------------------------------------
-# 1. Load trial data (mock stand-in for a cleaned analysis dataset)
+# 1. Load trial data (cleaned analysis dataset)
 # ---------------------------------------------------------------------------
 def load_trial_data() -> list[dict]:
     """
-    Return finalized participant records for analysis.
+    Load finalized participant records from the cleaned data export.
 
-    In a real project this would read a CSV / database export after
-    data collection. Here we generate a realistic mock dataset once.
-    The analysis code below treats these rows like observed data only.
+    In a real project this file comes from your data team after collection,
+    cleaning, and de-identification. The analysis code never constructs outcomes.
     """
-    return _generate_mock_records(seed=42, n=400, attrition_rate=0.08)
-
-
-def _generate_mock_records(seed: int, n: int, attrition_rate: float) -> list[dict]:
-    """
-    Internal mock data collection — not part of the analysis plan.
-
-    Creates a plausible job-training trial: baseline survey fields,
-    random assignment, follow-up income, and some survey nonresponse.
-    """
-    rng = random.Random(seed)
     rows: list[dict] = []
 
-    for i in range(n):
-        age = rng.gauss(35, 10)
-        female = 1 if rng.random() < 0.52 else 0
-        baseline_income = max(12000, rng.gauss(28000, 7000))
-        baseline_score = rng.gauss(65, 12)
-
-        # Outcome model unknown to analyst; treatment shifts earnings upward.
-        control_outcome = (
-            18000
-            + 450 * baseline_score
-            + 0.35 * baseline_income
-            + 120 * female
-            + rng.gauss(0, 2500)
-        )
-        treatment_lift = 2500 + rng.gauss(0, 1200)
-        treated_outcome = control_outcome + treatment_lift
-
-        assigned_treatment = 1 if rng.random() < 0.5 else 0
-        realized_outcome = treated_outcome if assigned_treatment == 1 else control_outcome
-
-        # Some participants missing at follow-up (handled in CONSORT table).
-        post_income = realized_outcome if rng.random() > attrition_rate else None
-
-        rows.append(
-            {
-                "id": i + 1,
-                "age": age,
-                "female": female,
-                "baseline_income": baseline_income,
-                "baseline_score": baseline_score,
-                "treat": assigned_treatment,
-                "post_income": post_income,
-            }
-        )
+    with open(DATA_FILE, newline="", encoding="utf-8") as f:
+        for record in csv.DictReader(f):
+            post = record[PRIMARY_OUTCOME].strip()
+            rows.append(
+                {
+                    "id": int(record["id"]),
+                    "age": float(record["age"]),
+                    "female": int(record["female"]),
+                    "baseline_income": float(record["baseline_income"]),
+                    "baseline_score": float(record["baseline_score"]),
+                    "treat": int(record["treat"]),
+                    PRIMARY_OUTCOME: float(post) if post else None,
+                }
+            )
 
     return rows
 
