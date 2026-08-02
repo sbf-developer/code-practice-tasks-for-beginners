@@ -35,17 +35,36 @@ console.log("Hello, World!")
 // --- Task 2: Sum two numbers ---
 // Ask the user for two numbers and print their sum.
 
-input ()
+import readlineSync from "readline-sync"; 
+
+const first = parseInt(readlineSync.question("First number: "));
+const second = parseInt(readlineSync.question("Second number: "));
+console.log(first + second);
 
 
 // --- Task 3: Even or odd ---
 // Ask the user for an integer and print whether it is "Even" or "Odd".
+
+import readlineSync from "readline-sync";
+
+const number = parseInt(readlineSync.question("Insert number here: "));
+if (number % 2 === 0) {
+    console.log("Even");
+} else {
+    console.log("Odd");
+}
+
 
 
 // --- Task 4: FizzBuzz (single number) ---
 // Ask for a number n. If n is divisible by 3, print "Fizz".
 // If divisible by 5, print "Buzz". If divisible by both, print "FizzBuzz".
 // Otherwise print the number itself.
+
+
+
+
+
 
 
 // --- Task 5: Count to n ---
