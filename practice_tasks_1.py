@@ -188,6 +188,19 @@ print(average)
 # Print the result.
 
 
+values = [-3, 7, 0, 12, -1, 5, -8]
+
+positives = []
+
+for n in values:
+    if n > 0:
+        positives.append(n)
+
+print(positives)
+
+
+
+
 
 # --- Task 15: Word frequency ---
 # Given a sentence, count how many times each word appears.
