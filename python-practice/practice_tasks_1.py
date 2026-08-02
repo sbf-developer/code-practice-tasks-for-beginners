@@ -210,9 +210,18 @@ print(positives)
 # Use this sentence: "the cat and the dog and the bird"
 # Print each word and its count.
 
+sentence = "the cat and the dog and the bird"
 
+counts = {}
 
+for word in sentence.split():
+    if word in counts:
+        counts[word] += 1
+    else:
+        counts[word] = 1
 
+for word, count in counts.items():
+    print(word, count)
 
 
 
@@ -220,11 +229,34 @@ print(positives)
 # Pick a secret number (e.g. 7). Let the user guess until they get it right.
 # After each wrong guess, print "Too high" or "Too low".
 
+secret = 7
+guess = 0
+
+while guess != secret:
+    guess = int(input("Guess: "))
+
+    if guess > secret:
+        print("Too high")
+    elif guess < secret:
+        print("Too low")
+
+print("Correct!")
+
 
 
 # --- Task 17: Fibonacci sequence ---
 # Ask the user for n and print the first n numbers of the Fibonacci sequence.
 # Example for n=7: 0, 1, 1, 2, 3, 5, 8
+
+n = int(input("How many numbers: "))
+
+a = 0
+b = 1
+
+for i in range(n):
+    print(a)
+    a, b = b, a + b
+
 
 
 
@@ -232,6 +264,7 @@ print(positives)
 # Given a list with duplicate values, return a new list with duplicates removed.
 # Use this list: items = [1, 2, 2, 3, 4, 4, 4, 5]
 # Print the result (order does not matter).
+
 
 
 
