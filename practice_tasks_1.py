@@ -155,7 +155,10 @@ else:
 #   ...
 
 
+n = int(input("Insert a number: "))
 
+for i in range(1, 11):
+    print(n, "x", i, "=", n * i)
 
 
 
@@ -163,6 +166,19 @@ else:
 # --- Task 13: Average of grades ---
 # Given a list of test scores, compute and print the average.
 # Use this list: grades = [85, 92, 78, 90, 88]
+
+grades = [85, 92, 78, 90, 88]
+
+total = 0
+
+for grade in grades:
+    total = total + grade
+
+average = total / len(grades)
+
+print(average)
+
+
 
 
 
