@@ -11,7 +11,11 @@
 //   npm install readline-sync
 //   npm install -D @types/readline-sync typescript ts-node
 //
-// Then at the top of your solutions, add:
+// Each task below has its own import line (like practicing alone).
+// Only ONE import can be uncommented at a time — otherwise TypeScript
+// shows red. When you start a new task, comment out the previous task's
+// import and uncomment the new one.
+//
 //   import readlineSync from "readline-sync";
 //   const n = parseInt(readlineSync.question("Insert a number: "));
 //
@@ -35,7 +39,7 @@ console.log("Hello, World!")
 // --- Task 2: Sum two numbers ---
 // Ask the user for two numbers and print their sum.
 
-import readlineSync from "readline-sync"; 
+import readlineSync from "readline-sync";
 
 const first = parseInt(readlineSync.question("First number: "));
 const second = parseInt(readlineSync.question("Second number: "));
@@ -61,8 +65,7 @@ if (number % 2 === 0) {
 // If divisible by 5, print "Buzz". If divisible by both, print "FizzBuzz".
 // Otherwise print the number itself.
 
-
-
+// import readlineSync from "readline-sync";
 
 
 
