@@ -18,9 +18,9 @@ from pathlib import Path
 from typing import Iterable
 
 
-# ---------------------------------------------------------------------------
-# 0. Trial design (pre-analysis plan — known before seeing outcomes)
-# ---------------------------------------------------------------------------
+
+# 0. Trial design 
+
 TRIAL_NAME = "Job Training RCT"
 PRIMARY_OUTCOME = "post_income"
 BASELINE_COVARIATES = ["age", "female", "baseline_income", "baseline_score"]
@@ -31,9 +31,9 @@ HYPOTHESIS = "Job training raises post-program income relative to control."
 DATA_FILE = Path(__file__).parent / "trial_data.csv"
 
 
-# ---------------------------------------------------------------------------
-# 1. Load trial data (cleaned analysis dataset)
-# ---------------------------------------------------------------------------
+
+# 1. Load trial data 
+
 def load_trial_data() -> list[dict]:
     """
     Load finalized participant records from the cleaned data export.
@@ -59,3 +59,49 @@ def load_trial_data() -> list[dict]:
             )
 
     return rows
+
+    # 2. Statistics helpers
+
+    def mean(values: Iterable[float]) -> float:
+        vals = list(values)
+        return sum(vals) / len(vals)
+
+
+    def variance(values: Iterable[float], ddof: int = 1) -> float:
+        vals = list(values)
+        if len(vals) <= ddof:
+            return float("nan")
+        m = mean(vals)
+        return math.sqrt(variance(values, ddof=ddof))
+
+    def std_dev(values: Iterable[float], ddof: int = 1) -> float:
+        return math.sqrt(variance(values, ddof=ddof))
+
+    def normal_cdf(x: float) -> float:
+        return 0.5 * (1.0 + math.erf(x / math.sqrt(2.0)))
+
+    def two_sided_p_from_z(z: float) -> float:
+        return 2.0 (1.0 - normal_cdf(abs(z)))
+
+    
+    @dataclass
+    class TwoSampleResult:
+        n_t: int
+        n_c: int
+        mean_t: float
+        mean_c: float
+        diff: float
+        se: float
+        ci_low: float
+        ci_high: float
+        t_stat: float
+        p_value: float
+        cohens_d: float
+
+    def welch_two_samples(values_t: list[float], values_c: list[float]) -> TwoSampleResult:
+        """Welch's unequal-variance two-sample comparison."""
+        n1, n0 = len(values_t), len(values_c)
+        m1, m0 = mean(values_t), mean(values_c)
+        v1, v0 = variance(values_t), variance(values_c)
+
+        
