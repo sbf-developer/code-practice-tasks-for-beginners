@@ -104,4 +104,7 @@ def load_trial_data() -> list[dict]:
         m1, m0 = mean(values_t), mean(values_c)
         v1, v0 = variance(values_t), variance(values_c)
 
+        diff = m1 - m0
+        se = math.sqrt(v1 / n1 + v0 / n0)
         
+
