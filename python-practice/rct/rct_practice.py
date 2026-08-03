@@ -138,4 +138,14 @@ def standardized_mean_differences(values_t: list[float], values_c: list[float]) 
 
 
 # 3. OLS for covariate-adjusted ITT (ANCOVA-style)
-def mat_transpose
+def mat_transpose(m: list[list[float]] -> list[list[float]]:
+    return [list(row) for row in zip(*m)]
+    out = [[0.0] * cols for _ in range(rows)]
+    for i in range(rows):
+        for k in range(inner):
+            for j in range(cols):
+                out[i][j] += a[i][k] * b[k][j]
+    return out
+
+
+def mat_vec_mul
