@@ -115,4 +115,27 @@ def load_trial_data() -> list[dict]:
 
         pooled_sd = math.sqrt(((n1 - 1) * v1 + (n0 - 1) * v0) / (n1 + n0 - 2))
         cohens_d = diff / pooled_sd if pooled_sd > 0 else float("nan")
-        
+
+        return TwoSampleResult(
+            n_t=n1,
+            n_c=n0,
+            mean_t=m1,
+            mean_c=m0,
+            diff=diff,
+            se=se,
+            ci_low=co_low,
+            ci_high=ci_high,
+            t_stat=t_stat,
+            p_value=p_value,
+            cohens_d=cohens_d,
+        )
+
+def standardized_mean_differences(values_t: list[float], values_c: list[float]) -> float:
+    m1, m0 = mean(values_t), mean(values_c)
+    s1, s0 = std_dev(values_t), std_dev(values_c)
+    pooled = math.sqrt((s1**2 + s0**2) / 2.0)
+    return (m1 - m0) / pooled if pooled > 0 else float("nan")
+
+
+# 3. OLS for covariate-adjusted ITT (ANCOVA-style)
+def mat_transpose
