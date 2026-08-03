@@ -106,5 +106,13 @@ def load_trial_data() -> list[dict]:
 
         diff = m1 - m0
         se = math.sqrt(v1 / n1 + v0 / n0)
-        
+        t_stat = diff / se if se > 0 else float("inf")
+        p_value = two_sided_p_from_z(t_stat)
 
+        z_crit = 1.96
+        ci_low = diff - z_crit * se
+        ci_high = diff + z_crit * se
+
+        pooled_sd = math.sqrt(((n1 - 1) * v1 + (n0 - 1) * v0) / (n1 + n0 - 2))
+        cohens_d = diff / pooled_sd if pooled_sd > 0 else float("nan")
+        
