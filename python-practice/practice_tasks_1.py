@@ -265,6 +265,16 @@ for i in range(n):
 # Use this list: items = [1, 2, 2, 3, 4, 4, 4, 5]
 # Print the result (order does not matter).
 
+items = [1, 2, 2, 3, 4, 4, 4, 5]
+
+unique = []
+
+for item in items:
+    if item not in unique:
+        unique.append(item)
+
+print(unique)
+
 
 
 
@@ -272,7 +282,9 @@ for i in range(n):
 # Ask the user for a temperature in Celsius and convert it to Fahrenheit.
 # Formula: F = C * 9/5 + 32
 
-
+celsius = float(input("Insert a temperature in Celsius: "))
+fahrenheit = celsius * 9/5 + 32
+print(fahrenheit)
 
 # --- Task 20: Simple password check ---
 # Ask the user for a password. It is valid if it has at least 8 characters
