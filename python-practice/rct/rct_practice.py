@@ -148,4 +148,20 @@ def mat_transpose(m: list[list[float]] -> list[list[float]]:
     return out
 
 
-def mat_vec_mul
+def mat_vec_mul(a: list[list[float]], v: list[float]) -> list[float]:
+    return [sum(a[i][j] * v[j] for j in range(len(v))) for i in range(len(a))]
+
+
+def invert_matrix(m: list[list[float]]) -> list[list[float]]:
+    n = len(m)
+    aug = [row[:] + [1.0 if i == j else 0.0 for j in range(n)] for i, row in enumerate(m)]
+    for col in range(n):
+        pivot = aug[col][col]
+        if abs(pivot) < 1e-12:
+            raise ValueError("Singular matrix in OLS.")
+        aug[col] = [x / pivot for x in aug[col]]
+        for row in range(n):
+            if row == col:
+                continue
+            factor = aug[row][col]
+            aug[row] = [aug[row][j]]
