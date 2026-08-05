@@ -20,15 +20,33 @@
 # Use an f-string: f"Hello, {name}!"
 # Example: name = "Alex" -> Hello, Alex!
 
+name = input("What is your name?: ")
+
+print(f"Hello, {name}!")
+
 
 # --- Task 2: Difference of two numbers ---
 # Ask the user for two numbers and print the first minus the second.
 # Example: 10 and 3 -> 7
 
+first = int(input("First number: "))
+second = int(input("Second number: "))
+
+print(first - second)
+
 
 # --- Task 3: Positive, negative, or zero ---
 # Ask the user for a number and print "Positive", "Negative", or "Zero".
 # Use if / elif / else with three outcomes.
+
+number = int(input("Insert a number: "))
+
+if number > 0:
+    print("Positive")
+elif number < 0:
+    print("Negative")
+else:
+    print("Zero")
 
 
 # --- Task 4: Letter grade ---
@@ -40,6 +58,20 @@
 #   below 60 -> F
 # Practice chaining several elif branches.
 
+test_score = int(input("Insert your grade here: "))
+
+if test_score >= 90:
+    print("A")
+elif test_score >= 80:
+    print("B")
+elif test_score >= 70:
+    print("C")
+elif test_score >= 60:
+    print("D")
+else:
+    print("F")
+
+
 
 # --- Task 5: Countdown ---
 # Ask the user for a positive integer n and print a countdown from n down to 1,
@@ -47,11 +79,25 @@
 # Example: n=5 -> 5, 4, 3, 2, 1
 # Hint: range(n, 0, -1)
 
+n = int(input("Insert a number "))
+
+for i in range(n, 0, -1):
+    print(i)
+
+
+
+
 
 # --- Task 6: Count words ---
 # Ask the user for a sentence and print how many words it contains.
 # Example: "hello world python" -> 3
 # Hint: sentence.split() splits a string into a list of words.
+
+sentence = input("Insert a sentence: ")
+
+words = sentence.split()
+print(len(words))
+
 
 
 # --- Task 7: Second largest ---
