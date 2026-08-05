@@ -289,3 +289,10 @@ print(fahrenheit)
 # --- Task 20: Simple password check ---
 # Ask the user for a password. It is valid if it has at least 8 characters
 # and contains at least one digit. Print "Valid" or "Invalid".
+
+int(input("Insert a password: "))
+
+if len(password) >= 8:
+    print("Valid")
+else:
+    print("Invalid")
