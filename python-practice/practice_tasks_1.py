@@ -290,9 +290,14 @@ print(fahrenheit)
 # Ask the user for a password. It is valid if it has at least 8 characters
 # and contains at least one digit. Print "Valid" or "Invalid".
 
-int(input("Insert a password: "))
+password = input("Insert a password: ")
 
-if len(password) >= 8:
+has_digit = False
+for char in password:
+    if char.isdigit():
+        has_digit = True
+
+if len(password) >= 8 and has_digit:
     print("Valid")
 else:
     print("Invalid")

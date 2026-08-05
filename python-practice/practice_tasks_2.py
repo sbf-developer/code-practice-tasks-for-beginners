@@ -106,17 +106,56 @@ print(len(words))
 # Example result: 17
 # Do not sort the list — use a loop.
 
+numbers = [3, 17, 8, 42, 1, 9]
+
+largest = numbers[0]
+second_largest = numbers[0]
+
+for n in numbers:
+    if n > largest:
+        second_largest = largest
+        largest = n
+    elif n > second_largest:
+        second_largest = n
+
+print(second_largest)
+
+
+
 
 # --- Task 8: Product of a list ---
 # Given a list of numbers, compute and print the product (multiply all together).
 # Use this list: numbers = [2, 3, 4]
 # Example: 2 * 3 * 4 = 24
 
+numbers = [2, 3, 4]
+
+product = 1
+
+for n in numbers:
+    product = product * n
+
+print(product)
+
+
+
+
+
+
+
 
 # --- Task 9: Power of a number ---
 # Ask the user for a base and an exponent (two integers) and print base ** exponent.
 # Example: base=2, exponent=10 -> 1024
 # Hint: ** is Python's power operator.
+
+base = int(input("Base: "))
+exponent = int(input("Exponent: "))
+
+print(base ** exponent)
+
+
+
 
 
 # --- Task 10: Leap year check ---
